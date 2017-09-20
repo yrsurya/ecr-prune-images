@@ -23,7 +23,7 @@ DRYRUN = None
 IMAGES_TO_KEEP = None
 ASSUME_ROLE = None
 
-def getAWSClient(resource_name,region_name='us-east-1'):
+def getAWSClient(resource_name,region='us-east-1'):
     sts_client = boto3.client('sts')
     assumedRoleObject = sts_client.assume_role(
         RoleArn=ASSUME_ROLE,
@@ -34,11 +34,12 @@ def getAWSClient(resource_name,region_name='us-east-1'):
         resource_name,
         aws_access_key_id = credentials['AccessKeyId'],
         aws_secret_access_key = credentials['SecretAccessKey'],
-        aws_session_token = credentials['SessionToken']
+        aws_session_token = credentials['SessionToken'],
+        region_name = region
     )
     return client
 
-def getAWSResource(resource_name,region_name='us-east-1'):
+def getAWSResource(resource_name,region='us-east-1'):
     sts_client = boto3.client('sts')
     assumedRoleObject = sts_client.assume_role(
         RoleArn=ASSUME_ROLE,
@@ -51,7 +52,8 @@ def getAWSResource(resource_name,region_name='us-east-1'):
         resource_name,
         aws_access_key_id = credentials['AccessKeyId'],
         aws_secret_access_key = credentials['SecretAccessKey'],
-        aws_session_token = credentials['SessionToken']
+        aws_session_token = credentials['SessionToken'],
+        region_name = region
     )
     return resource
 
