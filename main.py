@@ -35,7 +35,7 @@ def getAWSClient(resource_name,region_name='us-east-1'):
         aws_access_key_id = credentials['AccessKeyId'],
         aws_secret_access_key = credentials['SecretAccessKey'],
 		region = region_name,
-        aws_session_token = credentials['SessionToken'],
+        aws_session_token = credentials['SessionToken']
     )
     return client
 
@@ -53,7 +53,7 @@ def getAWSResource(resource_name,region_name='us-east-1'):
         aws_access_key_id = credentials['AccessKeyId'],
         aws_secret_access_key = credentials['SecretAccessKey'],
 		region = regions_name,
-        aws_session_token = credentials['SessionToken'],
+        aws_session_token = credentials['SessionToken']
     )
     return resource
 
