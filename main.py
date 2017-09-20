@@ -86,7 +86,7 @@ def handler(event, context):
 def discover_delete_images(regionname):
     print("Discovering images in "+regionname)
     #ecr_client = boto3.client('ecr', region_name=regionname)
-    ecr_client = getAWSClient('ecr', region_name=regionname)
+    ecr_client = getAWSClient('ecr', region=regionname)
     repositories = []
     describerepo_paginator = ecr_client.get_paginator('describe_repositories')
     for response_listrepopaginator in describerepo_paginator.paginate():
@@ -96,7 +96,7 @@ def discover_delete_images(regionname):
     #print(repositories)
 
     #ecs_client = boto3.client('ecs', region_name=regionname)
-    ecs_client = getAWSClient('ecs', region_name=regionname)
+    ecs_client = getAWSClient('ecs', region=regionname)
 
     listclusters_paginator = ecs_client.get_paginator('list_clusters')
     running_containers = []
